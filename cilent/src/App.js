@@ -45,10 +45,11 @@ function App() {
   // };
 
   return (
-    <div className='container'>
+    <div className={`container ${nightMode ? 'night-mode' : ''}`}>
+       <NightModeToggle toggleNightMode={toggleNightMode} nightMode={nightMode} />
       <div className={`app-container ${nightMode ? 'night-mode' : ''}`}>
         
-        <NightModeToggle toggleNightMode={toggleNightMode} nightMode={nightMode} />
+       
         
         
         <Header />
@@ -58,7 +59,7 @@ function App() {
         <ItemList className='but' items={items} removeItem={removeItem} />
         
       </div>
-      <button onClick={getFoods}></button>
+      
     </div>
   );
 }
