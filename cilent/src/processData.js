@@ -24,8 +24,8 @@ export function processItems(items) {
         const sevenDaysBeforeExpiry = expiryDate - (7 * 24 * 60 * 60 * 1000); 
 
         //The percentage of time passed from dateNow to currentTime, relative to the expiryDate
-        let timePassedPercentage = ((currentTime - dateNow) / (expiryDate - dateNow)) * 100;
-        timePassedPercentage = Math.min(Math.max(timePassedPercentage, 0), 100);
+        let freshnessRemainingPercentage = ((currentTime - dateNow) / (expiryDate - dateNow)) * 100;
+        freshnessRemainingPercentage = Math.min(Math.max(freshnessRemainingPercentage, 0), 100);
 
         // Percentage of time relative to 7 days before the expiry date
         let warningPercentage;
@@ -51,7 +51,7 @@ export function processItems(items) {
             itemName: item.itemName,
             expiryDate: item.expiryDate,
             state: state,
-            timePassedPercentage: parseFloat(timePassedPercentage.toFixed(2)),
+            freshnessRemainingPercentage: 100 - parseFloat(freshnessRemainingPercentage.toFixed(2)),
             warningPercentage: parseFloat(warningPercentage.toFixed(2)),
             timeLeft: convertMilliseconds(expiryDate - currentTime),
             rawTimeLeft: (expiryDate - currentTime),

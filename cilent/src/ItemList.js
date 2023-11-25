@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from "react";
 import { processItems, sortByRawTimeLeft } from "./processData";
+import { mapPercentageToColor } from "./gradientCalculator"
 
 const test = [{id: 30, itemName: 'Parth', expiryDate: '2023-11-25', dateNow: '1700922242989'},
               {id: 32, itemName: 'hey', expiryDate: '2023-11-09', dateNow: '1700932616264'}]
@@ -56,6 +57,7 @@ const ItemList = ({ items, removeItem }) => {
             <div>
               <strong>{foodData.itemName}</strong>
               <p>Time Left: {displayTimeLeft(foodData.rawTimeLeft)}</p>
+              {console.log(mapPercentageToColor(foodData.freshnessRemainingPercentage))}
             </div>
             <button onClick={() => deleteFood(foodData.id)}>Remove</button>
           </li>
@@ -68,6 +70,7 @@ const ItemList = ({ items, removeItem }) => {
             <div>
               <strong>{foodData.itemName}</strong>
               <p>Time Left: {displayTimeLeft(foodData.rawTimeLeft)}</p>
+              {console.log(foodData.freshnessRemainingPercentage)}
             </div>
             <button onClick={() => deleteFood(foodData.id)}>Remove</button>
           </li>
@@ -80,6 +83,7 @@ const ItemList = ({ items, removeItem }) => {
             <div>
               <strong>{foodData.itemName}</strong>
               <p>Time Left: {displayTimeLeft(foodData.rawTimeLeft)}</p>
+              {console.log(foodData.freshnessRemainingPercentage)}
             </div>
             <button onClick={() => deleteFood(foodData.id)}>Remove</button>
           </li>
