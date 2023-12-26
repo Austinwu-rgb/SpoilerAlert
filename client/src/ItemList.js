@@ -49,7 +49,7 @@ const ItemList = ({ items, removeItem }) => {
 
     const intervalId = setInterval(() => {
       setFoodData(foodData);
-    }, 5 * 1000); 
+    }, 5 * 60 * 1000); 
 
     return () => clearInterval(intervalId);
   }, [items]);
